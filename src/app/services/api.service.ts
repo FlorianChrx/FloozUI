@@ -10,13 +10,17 @@ import { AuthenticationService } from './authentication.service';
 export class ApiService {
     constructor(private http: HttpClient, private auth: AuthenticationService) {
     }
-    
+
     get(path: string) {
         return this.http.get(`${environment.apiUrl}/${path}`)
     }
 
     put(path: string, data: any) {
         return this.http.put(`${environment.apiUrl}/${path}`, data)
+    }
+
+    delete(path: string) {
+        return this.http.delete(`${environment.apiUrl}/${path}`)
     }
 
 }

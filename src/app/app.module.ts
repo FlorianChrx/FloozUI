@@ -9,7 +9,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { RegisterComponent } from './register/register.component';
+import { GroupsComponent } from './groups/groups.component';
 import { GroupComponent } from './group/group.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { BalanceComponent } from './balance/balance.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
     imports: [
@@ -23,7 +27,11 @@ import { GroupComponent } from './group/group.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        GroupComponent
+        GroupsComponent,
+        GroupComponent,
+        TransactionsComponent,
+        BalanceComponent,
+        UserComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

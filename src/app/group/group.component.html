@@ -1,1 +1,45 @@
-<p>group works!</p>
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-around">
+            <div *ngIf="!loading" class="p-3">
+                <p class="h2">{{group.name}}</p>
+            </div>
+            <div class="p-3">
+                <a *ngIf="!loading" class="btn btn-success" [routerLink]="['/balance', group.id]">Balance</a>
+            </div>
+            <div class="p-3">
+                <a *ngIf="!loading" class="btn btn-primary" [routerLink]="['/group', group.id,'addTransaction']">Add a
+                    transaction</a>
+            </div>
+            <div class="p-3">
+                <a *ngIf="!loading" class="btn btn-primary" [routerLink]="['/group', group.id,'addUser']">Add a
+                    user</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="d-flex justify-content-center">
+            <span *ngIf="loading" class="spinner-border spinner-border-lg"></span>
+        </div>
+        <div class="list-group">
+            <a *ngFor="let transaction of transactions" class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-4 col-md-3">
+                        {{transaction.motif}}
+                    </div>
+                    <div class="col-4 col-md-3">
+                        {{transaction.amount}}
+                    </div>
+                    <div class="col-3 d-none d-md-inline">
+                        {{transaction.user.username}}
+                    </div>
+                    <div class="col-4 col-md-3">
+                        <button class="btn btn-danger" (click)="delete(transaction.id)"><span
+                                *ngIf="deleting && (deletingId == transaction.id)"
+                                class="spinner-border spinner-border-sm mr-1"></span>Delete</button>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

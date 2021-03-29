@@ -1,0 +1,5 @@
+<div class="list-group pt-3">
+    <div *ngFor="let repay of repayements" class="list-group-item list-group-item-action">
+        {{repay.sender.username}} need send {{repay.amount}} to {{repay.receiver.username}}
+    </div>
+</div>

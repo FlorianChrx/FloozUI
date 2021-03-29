@@ -1,0 +1,28 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+        <h4 class="card-header">Transaction input</h4>
+        <div class="card-body">
+            <form [formGroup]="addGroupForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="motif">Subject</label>
+                    <input type="text" formControlName="motif" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.motif.errors }" />
+                    <div *ngIf="submitted && f.motif.errors" class="invalid-feedback">
+                        <div *ngIf="f.motif.errors.required">Subject is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount spent</label>
+                    <input type="number" formControlName="amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+                    <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                        <div *ngIf="f.amount.errors.required">Amount is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Add
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>
